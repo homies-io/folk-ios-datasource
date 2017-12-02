@@ -9,37 +9,40 @@
 import Foundation
 import UIKit
 
-public struct DataSourceItem {
-    public var type = -1
-    public var title = ""
-    public var subtitle = ""
-    public var image: UIImage?
-    public var selectedImage: UIImage?
-    public var attributedTitle: NSAttributedString?
-    public var tableViewCellAccessoryType = UITableViewCellAccessoryType.none
+open class DataSourceItem {
+    open var type = -1
+    open var title = ""
+    open var subtitle = ""
+    open var image: UIImage?
+    open var selectedImage: UIImage?
+    open var attributedTitle: NSAttributedString?
+    open var tableViewCellAccessoryType = UITableViewCellAccessoryType.none
     
+    public init() {
+        
+    }
     public func sectionForObject() -> DataSourceSection {
         return DataSourceSection(items: [self])
     }
     public func sectionForObjectWithHeaderHeight(height: CGFloat) -> DataSourceSection {
-        var section = DataSourceSection(items: [self])
+        let section = DataSourceSection(items: [self])
         section.headerHeight = height
         return section
     }
     public func sectionForObjectWithHeaderAndFooterHeight(headerHeight: CGFloat, footerHeight: CGFloat) -> DataSourceSection {
-        var section = DataSourceSection(items: [self])
+        let section = DataSourceSection(items: [self])
         section.headerHeight = headerHeight
         section.footerHeight = footerHeight
         return section
     }
 }
 
-public struct DataSourceSection {
-    public var items = [DataSourceItem]()
-    public var headerHeight: CGFloat = 0.0
+open class DataSourceSection {
+    open var items = [DataSourceItem]()
+    open var headerHeight: CGFloat = 0.0
     public var headerTitle = ""
-    public var footerHeight: CGFloat = 0.0
-    public var footerTitle = ""
+    open var footerHeight: CGFloat = 0.0
+    open var footerTitle = ""
     
     public init(items: [DataSourceItem]) {
         self.items = items
@@ -56,7 +59,7 @@ open class DataSource {
     }
     
     class open func itemWith(cellType: Int, title: String, image: UIImage?, subtitle: String?) -> DataSourceItem {
-        var item = DataSourceItem()
+        let item = DataSourceItem()
         item.type = cellType
         item.title = title
         item.image = image
