@@ -103,7 +103,7 @@ open class DataSource {
     }
 }
 
-@objc protocol DataSourceReloader {
+@objc public protocol DataSourceReloader {
     @objc func reloadData()
     @objc optional func reloadDataAtIndexPath(indexPath: IndexPath)
     @objc optional func reloadDataAtIndexPaths(indexPaths: [IndexPath])
